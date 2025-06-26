@@ -1,4 +1,4 @@
-package Section4_DS_Algorithms.Constant_S_T_C_45;
+package Section5_DS_Algorithms.Constant_S_T_C_45;
 //Add 10 to the first element of an array
 public class Main {
     public static void main(String[] args) {

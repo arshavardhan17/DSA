@@ -2,7 +2,7 @@
 
 The amount of **time** or **space** taken by the program **Increases or Decreases**, with your **input size increases or decreases**.
 
-> This means the operation does depend on the size of the input.
+> This means the operation depend on the size of the input.
 
 ### ✅ Example:
 
