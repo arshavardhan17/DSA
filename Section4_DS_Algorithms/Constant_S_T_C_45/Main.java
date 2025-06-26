@@ -7,12 +7,12 @@ public class Main {
     arr[0]+=10;  //Time complexity=O(1)
     System.out.println(arr[0]);  //Time complexity=O(1)
 
-    //O(1)+O(1)==O(2)==O(n) //Constant TimeComplexity
+    //O(1)+O(1)==O(2)==O(1) //Constant TimeComplexity
 
     int num=arr[arr.length -1]; // Space Complexity==int(4bytes)=O(4)
     System.out.println("last element of array is: "+num);
     
-     //O(4bytes)=O(n) //constant Space Complexity
+     //O(4bytes)=O(1) //constant Space Complexity
 
     }
 }
