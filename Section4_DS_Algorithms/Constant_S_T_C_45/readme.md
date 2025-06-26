@@ -11,3 +11,5 @@ int getFirstElement(int[] arr) {
     return arr[0];
 }
 ```
+
+![O(1)](/home/arsha/Documents/Data Structurs/Section4_DS_Algorithms/Constant_S_T_C_45/O(1).png)
