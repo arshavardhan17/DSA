@@ -218,9 +218,3 @@ If this helped you, consider giving it a ⭐ on GitHub.
 It motivates me to improve and add more useful content!
 
 ---
-
-```
-
----
-
-```
