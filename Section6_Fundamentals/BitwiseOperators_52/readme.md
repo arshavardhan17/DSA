@@ -66,7 +66,7 @@ public class BasicBitwiseOps {
 #### 1. 🔍 Check if a number is even or odd
 
 ```java
-int num = 11;
+int num = 11;  //& it with 1
 if ((num & 1) == 0)
     System.out.println("Even");
 else
@@ -119,102 +119,10 @@ public class SetBitCounter {
 }
 ```
 
----
-
-## 🔐 Advanced Tricks
-
-### 1. Check if a number is a power of 2
-
-```java
-public static boolean isPowerOfTwo(int n) {
-    return n > 0 && (n & (n - 1)) == 0;
-}
-```
-
-### 2. Get Rightmost Set Bit
-
-```java
-int rightmostSetBit = n & -n;
-```
-
-### 3. Turn off the rightmost set bit
-
-```java
-n = n & (n - 1);
-```
-
-### 4. Check if ith bit is set
-
-```java
-boolean isSet = (n & (1 << i)) != 0;
-```
-
----
-
-## 🔬 Binary Representation Helper
-
-```java
-public class BinaryHelper {
-    public static String toBinary(int n) {
-        return String.format("%32s", Integer.toBinaryString(n)).replace(' ', '0');
-    }
-
-    public static void main(String[] args) {
-        int num = 10;
-        System.out.println("Binary of " + num + ": " + toBinary(num));
-    }
-}
-```
-
----
-
-## 🧑‍💻 Project Structure
-
-```
-bitwise-operators-java/
-├── src/
-│   ├── BasicBitwiseOps.java
-│   ├── SetBitCounter.java
-│   ├── BinaryHelper.java
-│   ├── AdvancedTricks.java
-│   └── UseCases.java
-├── README.md
-└── LICENSE
-```
-
----
-
 ## 📗 References
 
 - [GeeksforGeeks - Bitwise Operators](https://www.geeksforgeeks.org/bitwise-operators-in-java/)
 - [Oracle Java Documentation](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/op3.html)
 - [CSES Competitive Programming Handbook](https://cses.fi/book/book.pdf)
-
----
-
-## 🤝 Contributing
-
-Want to contribute? Awesome!
-Feel free to:
-
-- Add new examples
-- Optimize existing code
-- Improve documentation
-
-Fork the repo and submit a pull request! 🚀
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-See the [LICENSE](LICENSE) file for details.
-
----
-
-## ⭐ Star This Repo
-
-If this helped you, consider giving it a ⭐ on GitHub.
-It motivates me to improve and add more useful content!
 
 ---
