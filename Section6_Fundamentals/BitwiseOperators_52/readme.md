@@ -223,7 +223,4 @@ It motivates me to improve and add more useful content!
 
 ---
 
-✅ **Ready to Use:** Just paste this into your `README.md`. If you want, I can also give you each `.java` file with exact content based on this structure.
-
-Let me know if you'd like that too!
 ```
