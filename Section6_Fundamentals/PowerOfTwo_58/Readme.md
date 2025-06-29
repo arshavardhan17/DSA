@@ -24,14 +24,11 @@ A number `n` is a power of two **if and only if**:
 
 n > 0 && (n & (n - 1)) == 0
 
-````
-
 ### Why it works:
+
 - `n` in binary has only **one set bit**.
 - `n - 1` flips all bits after the rightmost set bit (including it).
 - Doing `n & (n - 1)` removes that only set bit — result is `0`.
-
----
 
 ## 💻 Java Code Example
 
@@ -50,7 +47,7 @@ public class PowerOfTwoChecker {
         }
     }
 }
-````
+```
 
 ---
 
