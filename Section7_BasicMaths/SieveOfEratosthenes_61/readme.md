@@ -1,8 +1,3 @@
-Here is a complete `README.md` for a project implementing the **Sieve of Eratosthenes** algorithm in Java. You can use this for your GitHub repository:
-
----
-
-```markdown
 # 🧮 Sieve of Eratosthenes
 
 The **Sieve of Eratosthenes** is an ancient algorithm used to find all prime numbers up to a given limit `n`. It is highly efficient for generating a list of primes and is based on the principle of eliminating the multiples of each prime number starting from 2.
@@ -25,6 +20,7 @@ Given an integer `n`, return all prime numbers less than or equal to `n` using t
 ---
 
 ## 📦 Project Structure
+
 ```
 
 SieveOfEratosthenes/
@@ -32,7 +28,7 @@ SieveOfEratosthenes/
 │ └── Main.java
 ├── README.md
 
-````
+```
 
 ---
 
@@ -71,7 +67,7 @@ public class Main {
         sieveOfEratosthenes(n);
     }
 }
-````
+```
 
 ---
 
