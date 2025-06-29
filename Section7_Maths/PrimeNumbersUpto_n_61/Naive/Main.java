@@ -1,4 +1,4 @@
-package Section7_BasicMaths.SieveOfEratosthenes_61.Naive;
+package Section7_Maths.PrimeNumbersUpto_n_61.Naive;
 //Task:Given an integer n, return the number of prime numbers that are strictly less than n.
 public class Main {
 

@@ -1,4 +1,4 @@
-package Section7_BasicMaths.PrimeNumber_60.Effecient;
+package Section7_Maths.PrimeNumber_60.Effecient;
 
 public class Main {
     public static boolean isPrime(int n){
