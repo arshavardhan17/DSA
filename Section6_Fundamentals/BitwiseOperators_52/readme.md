@@ -126,3 +126,30 @@ public class SetBitCounter {
 - [CSES Competitive Programming Handbook](https://cses.fi/book/book.pdf)
 
 ---
+
+## 1. Check if a number is a power of 2
+
+```java
+
+ public static boolean isPowerOfTwo(int n) {
+    return n > 0 && (n & (n - 1)) == 0;
+}
+```
+
+## 2. Get Rightmost Set Bit
+
+```java
+  int rightmostSetBit = n & -n;
+```
+
+## 3. Turn off the rightmost set bit
+
+```java
+  n = n & (n - 1);
+```
+
+## 4. Check if ith bit is set
+
+```java
+  boolean isSet = (n & (1 << i)) != 0;
+```
