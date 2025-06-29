@@ -2,7 +2,6 @@ Here's a complete `README.md` for **"Power of Two using Bitwise Operators"** —
 
 ---
 
-```markdown
 # 🔢 Power of Two Using Bitwise Operators in Java
 
 This project demonstrates how to check if a number is a power of two using efficient **bitwise operations** in Java.
@@ -22,7 +21,6 @@ Examples:
 ## 🧠 Bitwise Insight
 
 A number `n` is a power of two **if and only if**:
-```
 
 n > 0 && (n & (n - 1)) == 0
 
