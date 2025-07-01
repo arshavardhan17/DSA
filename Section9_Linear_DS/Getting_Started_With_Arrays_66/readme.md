@@ -191,6 +191,105 @@ Arrays.copyOf(arr, newLength);
 Arrays.equals(arr1, arr2);
 ```
 
+## 🧨 Java Array Power Tips & Shortcuts
+
+### 🔸 1. Use `for-each` Loop (Enhanced for loop)
+
+Avoid index-based loops if you don’t need the index.
+
+```java
+int[] arr = {1, 2, 3, 4};
+for (int num : arr) {
+    System.out.println(num);
+}
+```
+
+---
+
+### 🔸 2. Quickly Print Array Contents
+
+```java
+System.out.println(Arrays.toString(arr));  // instead of manual loop
+```
+
+---
+
+### 🔸 3. Fill an Array with a Value
+
+```java
+Arrays.fill(arr, 100);  // Fills every element with 100
+```
+
+---
+
+### 🔸 4. Copying Arrays (Fast Way)
+
+```java
+int[] copy = Arrays.copyOf(arr, arr.length);  // Deep copy
+```
+
+For partial copy:
+
+```java
+int[] first3 = Arrays.copyOfRange(arr, 0, 3);  // Copy first 3 elements
+```
+
+---
+
+### 🔸 5. Multi-D Array with Different Row Sizes (Jagged Arrays)
+
+```java
+int[][] jagged = new int[3][];
+jagged[0] = new int[2];
+jagged[1] = new int[4];
+jagged[2] = new int[1];
+```
+
+---
+
+### 🔸 6. Clone Arrays
+
+```java
+int[] clone = arr.clone();  // Same as copyOf
+```
+
+---
+
+### 🔸 7. Shortcut to Sort in Descending Order
+
+```java
+Integer[] arr = {5, 2, 9, 1};
+Arrays.sort(arr, Collections.reverseOrder());
+```
+
+Note: Works only with `Integer[]`, not `int[]`.
+
+---
+
+### 🔸 8. Parallel Sort (Faster for Large Arrays)
+
+```java
+Arrays.parallelSort(arr);  // Uses multiple threads (for huge arrays)
+```
+
+---
+
+### 🔸 9. Binary Search
+
+```java
+int pos = Arrays.binarySearch(arr, 5);  // Returns index of 5, or (-(insertion point)-1) if not found
+```
+
+⚠️ Make sure the array is **sorted** before using it.
+
+---
+
+### 🔸 10. Compare Arrays
+
+```java
+Arrays.equals(arr1, arr2);  // Returns true if elements match
+```
+
 ---
 
 ## 🧵 Array vs ArrayList (Bonus)
