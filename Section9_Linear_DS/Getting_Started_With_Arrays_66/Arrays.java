@@ -1,4 +1,4 @@
-package Section9_Linear_DS.Getting_Started_With_Arrays;
+package Section9_Linear_DS.Getting_Started_With_Arrays_66;
 
 public class Arrays {
     public static void main(String[] args) {
