@@ -4,17 +4,6 @@ This project demonstrates **how to create your own array implementation** from s
 
 ---
 
-## 📁 Project Structure
-
-```
-Section9_Linear_DS.CreatingOwnArrays_69
-│
-├── Array.java     // Custom array implementation
-└── Main.java      // Demo to test the array functionality
-```
-
----
-
 ## 📘 What You'll Learn
 
 - How arrays work under the hood
@@ -131,14 +120,6 @@ public class Main {
     }
 }
 ```
-
-### 🖨️ Output:
-
-```
-[1, 2, 3, 4, 5]
-```
-
----
 
 ## ⚠️ Limitations
 
