@@ -42,4 +42,24 @@ public class Array {
             this.items[CurrentIndex] = 0;
         }
     }
+
+    public int max() {
+        int result = this.items[0];
+        for (int i = 0; i < this.CurrentIndex; i++) {
+            if (items[i] > result) {
+                result = items[i];
+            }
+        }
+        return result;
+    }
+
+    public int min() {
+        int result = this.items[0];
+        for (int num : this.items) {
+            if (result < num) {
+                result = num;
+            }
+        }
+        return result;
+    }
 }
