@@ -1,28 +1,32 @@
-# 📦 Creating Your Own Array in Java
-
-This project demonstrates **how to create your own array implementation** from scratch in Java—without using any external libraries like `ArrayList`. It's a great exercise to understand how arrays work internally and how operations like insertion, removal, and searching are handled.
+# 📘 Full Explanation of Custom Dynamic Array Code in Java
 
 ---
 
-## 📘 What You'll Learn
+## 🔹 File 1: `Array.java`
 
-- How arrays work under the hood
-- Dynamic insertion logic
-- Linear search implementation
-- Manual deletion logic
-- How to override `toString()` for custom output
+```java
+package Section9_Linear_DS.CreatingOwnArrays_69;
+```
+
+- This defines the package where this class belongs. Organizing code into packages helps with modularity and reuse.
 
 ---
 
-## 🔧 Array.java — Class Breakdown
+### 🔧 Class Definition and Fields
 
 ```java
 public class Array {
-    private int[] items;         // Internal static array
-    private int CurrentIndex;    // Tracks number of inserted elements
+    private int[] items;
+    private int CurrentIndex;
 ```
 
-### 🔹 Constructor
+- `items`: The actual array storing integers.
+- `CurrentIndex`: Tracks how many elements are currently inserted. It also represents the next index where insertion can happen.
+- This simulates a dynamic array (like `ArrayList`), since Java arrays are of **fixed size**.
+
+---
+
+### 🧱 Constructor
 
 ```java
 public Array(int initialSize) {
@@ -30,26 +34,52 @@ public Array(int initialSize) {
 }
 ```
 
-- Initializes the internal array with a fixed size.
-- You cannot insert more elements than the size unless dynamic resizing is implemented (not included yet).
+- Initializes `items` with a given initial size.
+- `CurrentIndex` is automatically set to `0` by Java (default value for `int`).
+
+✅ **Example:**
+
+```java
+Array arr = new Array(5);
+// Now: items = [0, 0, 0, 0, 0], CurrentIndex = 0
+```
 
 ---
 
-### 🔹 `insert(int value)`
+### ➕ Insert Method
 
 ```java
 public void insert(int value) {
+    if (CurrentIndex == items.length) {
+        int[] temp = new int[items.length * 2];
+        for (int i = 0; i < CurrentIndex; i++) {
+            temp[i] = items[i];
+        }
+        items = temp;
+    }
     this.items[CurrentIndex] = value;
     CurrentIndex++;
 }
 ```
 
-- Inserts `value` at the next available position.
-- Assumes space is available (⚠️ doesn't handle overflow or resizing).
+#### 📌 What it does
+
+- Inserts `value` at the end of the array.
+- If the array is full (`CurrentIndex == items.length`), a new array with **double the size** is created.
+- Old values are copied into the new array (`temp`) using a `for` loop.
+- `items` now refers to the new resized array.
+- Then the value is stored at `CurrentIndex`, and `CurrentIndex` is incremented.
+
+✅ **Example Flow:**
+
+```java
+insert(10) → stored at index 0 → CurrentIndex = 1
+insert(20) → stored at index 1 → CurrentIndex = 2
+```
 
 ---
 
-### 🔹 `toString()`
+### 📃 toString Method
 
 ```java
 public String toString() {
@@ -58,18 +88,26 @@ public String toString() {
     for (int i = 0; i < this.CurrentIndex; i++) {
         str.append(this.items[i]).append(", ");
     }
-    str.append("\b\b]");
+    str.append("\b").append("\b").append("]");
     return str.toString();
 }
 ```
 
-- Returns a string representation of the array: `[1, 2, 3]`.
+#### 📌 Purpose
+
+- Returns a string version of the array: `[1, 2, 3]`
+
+#### 🔍 Details
+
+- Uses `StringBuilder` (more efficient than using `+`).
+- Loops up to `CurrentIndex` to avoid printing unused values in the array.
+- Removes the last `,` using backspace characters (`\b\b`).
 
 ---
 
-### 🔹 `Search(int value)`
+### 🔎 Search Method
 
-```java
+````java
 public int Search(int value) {
     for (int i = 0; i < this.CurrentIndex; i++) {
         if (this.items[i] == value)
@@ -77,92 +115,194 @@ public int Search(int value) {
     }
     return -1;
 }
-```
+```markdown
 
-- Performs **linear search** to find the index of the value.
-- Returns `-1` if the value is not found.
+#### 📌 What it does
+
+* Searches for `value` using **linear search**.
+* Returns index if found, else returns `-1`.
+
+🧠 **Time Complexity**: O(n)
 
 ---
 
-### 🔹 `removeAt(int index)`
+### ❌ RemoveAt Method (⚠️ Buggy)
+
+```java
+public void removeAt(int value) {
+    if (value >= this.CurrentIndex) {
+        throw new IllegalArgumentException();
+    }
+    for (int i = value; i <= this.CurrentIndex - 2; i++) {
+        this.items[i] = this.items[i + 1];
+        CurrentIndex--;
+        this.items[CurrentIndex] = 0;
+    }
+}
+````
+
+#### ❌ What’s wrong
+
+- `CurrentIndex--` is wrongly placed **inside the loop**, so it skips shifting some elements and shortens the array incorrectly.
+
+✅ **Fix it like this:**
 
 ```java
 public void removeAt(int index) {
-    if (index >= this.CurrentIndex) {
-        throw new IllegalArgumentException();
+    if (index >= CurrentIndex || index < 0) {
+        throw new IllegalArgumentException("Invalid index");
     }
-    for (int i = index; i <= this.CurrentIndex - 2; i++) {
-        this.items[i] = this.items[i + 1];
+    for (int i = index; i < CurrentIndex - 1; i++) {
+        items[i] = items[i + 1];
     }
     CurrentIndex--;
-    this.items[CurrentIndex] = 0;
+    items[CurrentIndex] = 0; // Optional cleanup
 }
 ```
 
-- Removes the item at the given index.
-- Shifts elements to the left to fill the gap.
-- Reduces the `CurrentIndex` and zeroes out the last value.
+---
+
+### 🔼 max Method
+
+```java
+public int max() {
+    int result = this.items[0];
+    for (int i = 0; i < this.CurrentIndex; i++) {
+        if (items[i] > result) {
+            result = items[i];
+        }
+    }
+    return result;
+}
+```
+
+- Finds the **maximum value** among inserted elements.
+- Starts from `items[0]` and compares each item.
+- Works only up to `CurrentIndex`.
 
 ---
 
-## 🚀 Main.java — Testing
+### 🔽 min Method (⚠️ Buggy)
 
 ```java
+public int min() {
+    int result = this.items[0];
+    for (int num : this.items) {
+        if (result < num) {
+            result = num;
+        }
+    }
+    return result;
+}
+```
+
+❌ **Bug:**
+
+- It finds the **maximum**, not minimum. The condition is wrong.
+
+✅ **Fix:**
+
+```java
+public int min() {
+    int result = this.items[0];
+    for (int i = 1; i < CurrentIndex; i++) {
+        if (items[i] < result) {
+            result = items[i];
+        }
+    }
+    return result;
+}
+```
+
+---
+
+### 🔁 Reverse Method
+
+````java
+public void reverse() {
+    int i = 0;
+    int j = CurrentIndex - 1;
+    while (i < j) {
+        items[i] = items[i] ^ items[j];
+        items[j] = items[i] ^ items[j];
+        items[i] = items[i] ^ items[j];
+        i++;
+        j--;
+    }
+}
+```maekdown
+
+#### 📌 What it does
+
+* Reverses the array **in-place**.
+* Uses **XOR swapping** instead of a temporary variable.
+
+📌 XOR Swap:
+
+```java
+a = a ^ b;
+b = a ^ b; // b becomes a
+a = a ^ b; // a becomes b
+````
+
+🧠 Works only for integers and when `i != j`.
+
+---
+
+## 🔹 File 2: `Main.java`
+
+```java
+package Section9_Linear_DS.CreatingOwnArrays_69;
+
 public class Main {
     public static void main(String[] args) {
-        Array arr = new Array(5);
+        Array arr = new Array(20);
         arr.insert(1);
         arr.insert(2);
         arr.insert(3);
         arr.insert(4);
         arr.insert(5);
         System.out.println(arr);
+        arr.reverse();
+        System.out.println(arr);
     }
 }
 ```
 
-## ⚠️ Limitations
+### ✅ Output
 
-- No **dynamic resizing** (e.g., like `ArrayList`)
-- No **bounds checking** in `insert()`
-- Fixed array size
-- Can’t insert at specific positions
+```java
+[1, 2, 3, 4, 5]
+[5, 4, 3, 2, 1]
+```
 
----
+### 💡 What Happens
 
-## 📈 Time Complexity Summary
-
-| Operation       | Time Complexity |
-| --------------- | --------------- |
-| Insert (end)    | O(1)            |
-| Search (linear) | O(n)            |
-| Remove (by idx) | O(n)            |
-| Print           | O(n)            |
+1. Array is created with size 20.
+2. 5 values inserted: \[1, 2, 3, 4, 5]
+3. `toString()` prints them.
+4. `reverse()` flips it.
+5. Again printed as \[5, 4, 3, 2, 1]
 
 ---
 
-## 📌 Future Improvements
+## 🧠 Summary of Methods
 
-- Add dynamic resizing (double size when full)
-- Add insertAt(index, value)
-- Add size getter method
-- Add contains(value)
-- Add clear/reset method
-
----
-
-## 🧠 Why Build This?
-
-Understanding internal data structures helps you:
-
-- Master memory handling
-- Write efficient custom structures
-- Crack technical interviews with confidence
+| Method     | Purpose                      | Time Complexity               |
+| ---------- | ---------------------------- | ----------------------------- |
+| insert()   | Insert value at end          | O(1) avg, O(n) worst (resize) |
+| Search()   | Find index of a value        | O(n)                          |
+| removeAt() | Delete value at index        | O(n)                          |
+| reverse()  | Reverse array in place       | O(n)                          |
+| max()      | Find max value               | O(n)                          |
+| min()      | Find min value (fixed logic) | O(n)                          |
 
 ---
 
-## ✅ Conclusion
+## ✅ Improvements You Can Add
 
-This project provides hands-on understanding of array implementation—beyond Java's built-in collections. Feel free to extend and explore further!
-
----
+1. **insertAt(index, value)**: Insert at any position
+2. **contains(value)**: Return true/false if exists
+3. **size()**: Return number of inserted elements
+4. **shrink()**: Reduce array size when underused
+5. **make it generic** using `<T>` instead of `int[]`

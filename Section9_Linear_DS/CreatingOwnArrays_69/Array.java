@@ -9,6 +9,13 @@ public class Array {
     }
 
     public void insert(int value) {
+        if (CurrentIndex == items.length) {
+            int[] temp = new int[items.length * 2];
+            for (int i = 0; i < CurrentIndex; i++) {
+                temp[i] = items[i];
+            }
+            items = temp;
+        }
         this.items[CurrentIndex] = value;
         CurrentIndex++;
     }
@@ -61,5 +68,20 @@ public class Array {
             }
         }
         return result;
+    }
+
+    public void reverse() {
+        int i = 0;
+        int j = CurrentIndex - 1;
+        while (i < j) {
+            // int temp = items[i];
+            // items[i] = items[j];
+            // items[j] = temp;
+            items[i] = items[i] ^ items[j];
+            items[j] = items[i] ^ items[j];
+            items[i] = items[i] ^ items[j];
+            i++;
+            j--;
+        }
     }
 }
