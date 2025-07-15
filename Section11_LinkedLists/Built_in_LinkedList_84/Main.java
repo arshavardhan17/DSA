@@ -1,4 +1,4 @@
-package Section11_LinkedLists.Built_in_LinkedList_3;
+package Section11_LinkedLists.Built_in_LinkedList_84;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,5 +10,6 @@ public class Main {
         list.add(1);
         list.add(2);
         list.add(3);
+        System.out.println(list);
     }
 }
