@@ -18,3 +18,4 @@ public class Main {
         Sc.close();
     }
 }
+// use strinng if we use int if we get 0 at bigining it wont count
