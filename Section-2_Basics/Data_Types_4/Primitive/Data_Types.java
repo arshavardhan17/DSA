@@ -16,22 +16,22 @@ public class Data_Types {
         System.out.println("Character: " + charVariable);
         System.out.println("Boolean: " + booleanVariable);
     }
-    
+
 }
 
 // 8bits=1byte
 
 /*
-Default sizes of primitive data types in Java:
-boolean: 1 bit (size not precisely defined, depends on JVM)
-char: 16 bits (2 bytes)
-byte: 8 bits (1 byte)
-short: 16 bits (2 bytes)
-int: 32 bits (4 bytes)
-long: 64 bits (8 bytes)
-float: 32 bits (4 bytes)
-double: 64 bits (8 bytes)
-*/
+ * Default sizes of primitive data types in Java:
+ * boolean: 1 bit (size not precisely defined, depends on JVM)
+ * char: 16 bits (2 bytes)
+ * byte: 8 bits (1 byte)
+ * short: 16 bits (2 bytes)
+ * int: 32 bits (4 bytes)
+ * long: 64 bits (8 bytes)
+ * float: 32 bits (4 bytes)
+ * double: 64 bits (8 bytes)
+ */
 
-// -2147483648 to 2147483647  Range of int
-//long age= 2147483648l
+// -2147483648 to 2147483647 Range of int
+// long age= 2147483648l
